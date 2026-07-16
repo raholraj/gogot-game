@@ -1,0 +1,5 @@
+extends Node2D
+
+func _ready():
+	var enemy = preload("res://scenes/runner_mode/enemy.gd").new()
+	add_child(enemy)

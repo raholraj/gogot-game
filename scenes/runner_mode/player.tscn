@@ -1,0 +1,5 @@
+extends Node2D
+
+func _ready():
+	var player = preload("res://scenes/runner_mode/player.gd").new()
+	add_child(player)

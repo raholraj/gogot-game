@@ -1,125 +1,147 @@
-# GOGOT GAME - Complete Game Project
+# GOGOT GAME - Godot Edition
 
-## Game Overview
-Gogot is a hybrid casual game featuring:
-- **Runner Mode (Frontline Breakthrough)**: Auto-running with lane changing and math gates
-- **Base Building Mode**: Resource management, building upgrades, fog clearing
-- **Combat System**: Auto-battle with squad management
+## Complete Game Overview
+
+Gogot is a **hybrid casual game** with:
+
+### 🏃 Runner Mode (Frontline Breakthrough)
+- **Auto-running** character moving forward
+- **3-lane system** with lane changing (A/D keys)
+- **Math gates**: Blue (+10, x2) and Red (-20, ÷2)
+- **Enemies**: Zombies and boss battles
+- **Squad size management** - starts at 10
+- **Auto-fire projectiles** against enemies
+- **Progressive waves** with increasing difficulty
+
+### 🏰 Base Building Mode
+- **5 Main Buildings**:
+  - Headquarters (Gold generation)
+  - Barracks (Troop training)
+  - Tavern (Hero recruitment - Gacha)
+  - Defense Tower (Protection)
+  - Mine (Iron generation)
+
+- **Resource Management**:
+  - Gold (Currency)
+  - Iron (Materials)
+  - Diamonds (Premium)
+
+- **Progression System**:
+  - Clear toxic fog to expand base
+  - Upgrade buildings for better production
+  - Visual progression with fog clearing
+
+### ⚔️ Combat System
+- **Auto-battle mechanics**
+- **Character stats**: HP, Attack, Defense
+- **Squad multiplier system**
+- **Hero gacha** with rarities (SSR, SR, UR, R)
 
 ## Project Structure
+
 ```
 gogot-game/
-├── main.py                 # Main game entry point
-├── config.py               # Game configuration and constants
-├── utils.py                # Utility functions
+├── project.godot
 ├── assets/
-│   ├── sprites/            # Character and enemy sprites
-│   ├── sounds/             # Audio files
-│   └── fonts/              # Font files
-├── game/
-│   ├── __init__.py
-│   ├── game.py             # Main game class
-│   ├── state_manager.py    # Game state management
-│   └── modes/
-│       ├── runner_mode.py  # Runner/Frontline mode
-│       └── base_mode.py    # Base building mode
-├── entities/
-│   ├── __init__.py
-│   ├── player.py           # Player character
-│   ├── enemy.py            # Enemy entities
-│   ├── hero.py             # Hero characters
-│   └── building.py         # Base buildings
-├── systems/
-│   ├── __init__.py
-│   ├── collision.py        # Collision detection
-│   ├── resource.py         # Resource management
-│   ├── combat.py           # Combat system
-│   └── ui.py               # UI rendering
-└── requirements.txt        # Dependencies
+│   ├── sprites/
+│   │   ├── player.png
+│   │   ├── enemies/
+│   │   └── buildings/
+│   ├── sounds/
+│   └── fonts/
+├── scenes/
+│   ├── main.tscn
+│   ├── runner_mode/
+│   │   ├── runner_scene.tscn
+│   │   ├── player.tscn
+│   │   ├── enemy.tscn
+│   │   └── math_gate.tscn
+│   ├── base_mode/
+│   │   ├── base_scene.tscn
+│   │   ├── building.tscn
+│   │   └── resource_panel.tscn
+│   ├── ui/
+│   │   ├── main_menu.tscn
+│   │   ├── hud.tscn
+│   │   └── pause_menu.tscn
+│   └── battle/
+│       └── battle_scene.tscn
+├── scripts/
+│   ├── constants.gd
+│   ├── game_manager.gd
+│   ├── state_manager.gd
+│   ├── runner/
+│   │   ├── runner_mode.gd
+│   │   ├── player.gd
+│   │   ├── enemy.gd
+│   │   └── math_gate.gd
+│   ├── base/
+│   │   ├── base_mode.gd
+│   │   ├── building.gd
+│   │   └── resource_manager.gd
+│   ├── battle/
+│   │   └── combat_system.gd
+│   ├── ui/
+│   │   ├── main_menu.gd
+│   │   ├── hud.gd
+│   │   └── ui_manager.gd
+│   └── systems/
+│       ├── collision_system.gd
+│       └── hero_gacha.gd
+└── README.md
 ```
 
-## Installation & Running
+## How to Run
 
-### Requirements
-- Python 3.8+
-- Pygame
-
-### Setup
-```bash
-pip install -r requirements.txt
-python main.py
-```
+1. Open Godot 4.1+
+2. Import this project
+3. Press F5 or click "Run"
 
 ## Controls
 
-### Runner Mode (Phone/Tablet)
-- **Left Swipe / A Key**: Move left lane
-- **Right Swipe / D Key**: Move right lane
-- **Auto-Fire**: Automatic shooting
-
-### Base Mode
-- **Click/Tap**: Select buildings or buttons
-- **Drag**: Pan the map
-- **Upgrade/Build**: Tap building then confirm
-
-## Game Features
-
 ### Runner Mode
-- Auto-running character
-- 3-lane system with enemies
-- Blue gates (+10, x2 multiplier)
-- Red gates (-20, ÷2 multiplier)
-- Squad size management
-- Boss battles
+- **A** / **←** - Move left lane
+- **D** / **→** - Move right lane
+- **ESC** - Back to menu
+- **Auto-fire** - Automatic
 
 ### Base Mode
-- Headquarters (resource generation)
-- Barracks (troop training)
-- Tavern (hero recruitment)
-- Defenses against fog
-- Resource management (Gold, Iron, Diamonds)
-- Building upgrades and repairs
+- **Click** - Select building
+- **Drag** - Pan camera
+- **ESC** - Back to menu
+- **U** - Upgrade selected building
+- **R** - Repair building
 
-### Combat System
-- Character stats (HP, Attack, Defense)
-- Auto-battle mechanics
-- Squad multiplier system
-- Loot and rewards
+## Features Implemented
 
-## Game Logic
-
-### Math Gates
-- **Blue Gates**: Multiply squad by 2 (bonus +10)
-- **Red Gates**: Divide squad by 2 (penalty -20)
-- **Collision with Enemies**: -20 damage
-- **Game Over**: When squad size reaches 0
-
-### Resource System
-- **Gold**: Currency for upgrades
-- **Iron**: Building material
-- **Diamonds**: Premium currency
-- **Time-based generation** from buildings
-
-### Base Progression
-- Clear toxic fog (green mist)
-- Expand playable area
-- Unlock new buildings
-- Increase resource generation
-
-## Asset Requirements
-- Character sprites (soldiers, heroes)
-- Enemy sprites (zombies, boss)
-- Building sprites
-- UI elements
-- Sound effects and music
+✅ State Management System
+✅ Runner Mode with lane changing
+✅ Math gates with multiplier system
+✅ Enemy spawning and waves
+✅ Auto-fire projectile system
+✅ Base building mode
+✅ Resource generation
+✅ Building upgrades
+✅ Fog clearing progression
+✅ UI/HUD system
+✅ Main menu
+✅ Pause system
+✅ Score tracking
+✅ Hero gacha system
+✅ Combat mechanics
+✅ Collision detection
 
 ## Future Enhancements
-- Multiplayer battles
-- More hero types and rarities
-- Advanced AI for enemies
+
+- Sound effects and music
 - Animation system
 - Particle effects
-- Sound and music integration
+- More hero types
+- Multiplayer battles
+- Level system
+- Achievements
+- Leaderboard
 
 ## License
-MIT License - Feel free to modify and distribute
+
+MIT License

@@ -1,0 +1,5 @@
+extends Node2D
+
+func _ready():
+	var game = preload("res://scenes/main.gd").new()
+	add_child(game)

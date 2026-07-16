@@ -1,0 +1,5 @@
+extends CanvasLayer
+
+func _ready():
+	var menu = preload("res://scenes/ui/main_menu.gd").new()
+	add_child(menu)

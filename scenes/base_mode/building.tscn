@@ -1,0 +1,5 @@
+extends Node2D
+
+func _ready():
+	var building = preload("res://scenes/base_mode/building.gd").new()
+	add_child(building)

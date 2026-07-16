@@ -1,0 +1,5 @@
+extends Node2D
+
+func _ready():
+	var gate = preload("res://scenes/runner_mode/math_gate.gd").new()
+	add_child(gate)
